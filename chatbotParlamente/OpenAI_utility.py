@@ -16,9 +16,7 @@ from langchain.chains import ConversationalRetrievalChain
 #ConversationBufferWindowMemory è una struttura di memoria che memorizza le ultime N interazioni di una conversazione. È utile per mantenere il contesto durante una conversazione lunga, migliorando la coerenza delle risposte.
 from langchain.memory import ConversationBufferWindowMemory
 
-#Per ottenere la api key dalla var. d'ambiente
-openai.api_key =os.getenv("OPENAI_API_KEY")
-
+openai.api_key = "sk-proj-CwBtRD9D21FWFK8tFJf6T3BlbkFJn510lJk6oJlyxez3tnp1"
 
 #Questa funzione merge_pdfs prende come input il percorso della cartella che contiene i PDF (folder_path) 
 #e il percorso dove salvare il PDF unito (output_path). La funzione utilizza os.walk per attraversare 
