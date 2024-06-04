@@ -1,5 +1,6 @@
 langchain
 sentence-transformers==2.2.2
+faiss-gpu
 pypdf
 streamlit
 pynvml
