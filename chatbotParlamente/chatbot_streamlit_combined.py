@@ -41,7 +41,7 @@ def main():
     #NOTA: l'ordine delle chiamate nel main ci garantisce che display_document_embedding_page() 
     #venga eseguita e completata prima che display_chatbot_page() venga chiamata.
     #Siamo dunque certi che il vector sia gia presente o che venga creato prima di interagire col chatbot
-    display_document_embedding_page()
+    #display_document_embedding_page()
     
     display_chatbot_page()
    
