@@ -1,14 +1,9 @@
 langchain
-faiss-cpu
 sentence-transformers==2.2.2
-InstructorEmbedding
 pypdf
 streamlit
 pynvml
 torch
-python-dotenv
 openai
 langchain_openai
 langchain_community
-time
-gc
