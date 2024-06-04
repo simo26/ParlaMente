@@ -135,7 +135,7 @@ def prepare_rag_llm(vector_store_list, temperature, max_length):
     # carico il mio db attraverso load_local della classe FAISS passando il file path del vector_store su cui lavorerà il RAG,
     #il modello di embedding, ed una serie di parametri (vedi a cosa serve allow_dangerous_deserialization)
     loaded_db = FAISS.load_local(
-        f"vector store/{vector_store_list}", instructor_embeddings, allow_dangerous_deserialization=True
+        f"chatbotParlamente/vector store/{vector_store_list}", instructor_embeddings, allow_dangerous_deserialization=True
     )
 
     #istanzio l'LLM richiamando il modello di GPT-3.5-turbo attraverso la classe per l'integrazione 
