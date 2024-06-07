@@ -54,12 +54,6 @@ def read_pdf(file):
 
 
 
-#Splittiamo i documenti di grande dimensioni in chunks, poichè il modello non può gestire input più grandi della sua context Length che nella maggior parte dei casi è 2048 token!
-#Ovviamente vogliamo realizzare uno split del documento che favorisca il recupero corretto delle informazioni.
-#Generiamo chunks fino a 200 token(o caratteri) attraverso separatori come double new line o space applicati sul documento;
-#Una volta individuato un chunk, realizziamo un secondo chunk non partendo dalla fine di quest'ultimo, ma tornando indietro di tot
-#caratteri al fine non rischiare di perdere informazioni con lo split; cioè da un lato può portare a rindondanza, ma assicuro maggiormente di preservare il significato semanatico nei chunk prodotti dal documento.
-
 #funzione per realizzare il recursive character text splitter; 
 #In tale funzione vengono passati i parametri settati a priori chunk size e chunk overlapping ottimali per i testi forniti; 
 #viene istanziato l'oggetto "splitter" a partire dalla classe RecursiveCharacterTextSplitter in cui vengono passati i parametri precedenti;
@@ -79,13 +73,6 @@ def split_doc(document, chunk_size, chunk_overlap):
     return split
 
 
-#codice per vedere i chunk generati
-#result = split_doc(read_pdf("merged_RegistroCmeraDeputati.pdf"), 330, 50)
-#print(result[0])
-#print(result[1])
-#print(result[2])
-
-
 
 #una volta creati i chunks, realizziamo l'embedding del documento e il salvataggio in un vector store per un futuro retrieval;
 #tale funzione prendere in ingresso i chunks generati con split_doc e dei parametri di controllo nel caso in cui si sta creando un nuovo vector store, con un nuovo nome, o se se ne sta ulitizzando creato in precedenza;
@@ -94,13 +81,11 @@ def embedding_storing( split, create_new_vs, existing_vector_store, new_vs_name)
 
         #Viene usato un pretrained sentence transformer model per generare l'embedding;
         #In tal caso si sfruttano i modelli di Embedding offerti da OpenAI (senza specificare il modello di default si utilizza text-embedding-ada-002)
-        
         instructor_embeddings = OpenAIEmbeddings()
 
         #Viene generato un vs tramite la classe FAISS per realizzare la similarity search,
-        #in particolare, applicando il metodo from_documents che a partire dai chunks dal modello di embedding precedente
-        #ho dunque generato il database;
-        #new db = FAISS.from_documents(split, instructor_embeddings)
+        #in particolare, applicando il metodo from_documents che a partire dai chunks e dal modello di embedding precedente
+        #genera il Vector database;
         db = FAISS.from_documents(split, instructor_embeddings)
 
         #Spiega perchè FAISS invece di Chroma!!!
@@ -126,16 +111,16 @@ def embedding_storing( split, create_new_vs, existing_vector_store, new_vs_name)
         
         
 #funzione per inizializzare e preparare il RAG conversational model con una data configurazione
-def prepare_rag_llm(vector_store_list, temperature, max_length):
+def prepare_rag_llm(vector_store, temperature, max_length):
 
 
     #istanzio nuovamente il modello di embedding precedente;
     instructor_embeddings = OpenAIEmbeddings()
 
     # carico il mio db attraverso load_local della classe FAISS passando il file path del vector_store su cui lavorerà il RAG,
-    #il modello di embedding, ed una serie di parametri (vedi a cosa serve allow_dangerous_deserialization)
+    #il modello di embedding, ed una serie di parametri.
     loaded_db = FAISS.load_local(
-        f"chatbotParlamente/vector store/{vector_store_list}", instructor_embeddings, allow_dangerous_deserialization=True
+        f"chatbotParlamente/vector store/{vector_store}", instructor_embeddings, allow_dangerous_deserialization=True
     )
 
     #istanzio l'LLM richiamando il modello di GPT-3.5-turbo attraverso la classe per l'integrazione 
@@ -157,11 +142,11 @@ def prepare_rag_llm(vector_store_list, temperature, max_length):
         return_messages=True,
     )
 
-    # Create the chatbot:
+
     #setto la question-answer chain attraverso la chain ConversationalRetrievalChain
-    #fornita dal LangChain, ovvero un metodo che recupera l'LLM definito prima, il db
-    #settato in modalità as_retriever, ovvero pronto a cercare i documenti necessari,
-    #e settando il parametro di memoria precedente;
+    #fornita dal LangChain, ovvero un modello che recupera l'LLM definito prima, il db
+    #settato in modalità as_retriever (ovvero pronto a cercare i documenti necessari),
+    #e setta il parametro di memoria precedente;
     qa_conversation = ConversationalRetrievalChain.from_llm(
         llm=llm,
         chain_type="stuff", #refine #il parametro chain_type="stuff" indica che i tre documenti più attinenti recuperati verranno combinati insieme e passati al modello di linguaggio in una singola richiesta per generare una risposta alla query
@@ -174,7 +159,6 @@ def prepare_rag_llm(vector_store_list, temperature, max_length):
     return qa_conversation
 
 #funzione per generare risposte alle query dell'utente usando un il conversational model realizzato prima:
-#prima c'era token
 def generate_answer(question):
     answer = "Si è verificato un errore" #Risposta di Default in caso di errore
     response = st.session_state.conversation({"question": question}) #Viene processata la domanda attraverso il conversational model
