@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+.stApp {
+    background-color: #ede8d4; /* Colore originale della pagina */
+    color: #000000;
+}
+.stButton>button {
+    background-color: #5f3c07;
+    color: white;
+    position:absolute;
+    right: 50px;
+    top: -40px;
+}
+.stTitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5em;
+    color: #5e3a05;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.st-ae{
+    background-color: #dcd6c0; /* Colore originale della pagina */
+    color: #000000;
+    border-color: #5e3a05;
+}
+
+.st-ae:active{
+    border-color: orange; 
+}
+
+.st-emotion-cache-12fmjuu{ /*header*/
+    background-color: #dcd6c0;
+    
+}
+
+.st-emotion-cache-uhkwx6{
+    background-color: #ede8d4;
+}
+
+.customBtn{
+    background-color: #dcd6c0; 
+    border-radius:30%;
+}
+.stHeader {
+    background-color: #5e3a05;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    color: #085457;
+}
+.stExpander {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    color: #5e3a05;
+}
+
+.stSideBar{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    color: #5e3a05;
+    background-color: #dcd6c0;
+}
+.stMarkdown {
+    font-family: 'Roboto', sans-serif;
+    color: #5e3a05;
+}
+
+.object-key-val{
+    background-color: #dcd6c0
+}
+
+.customHdr{
+    color: #5e3a05;
+}
+
+.st-emotion-cache-7ym5gk{
+    bottom: 20px;
+}
+
+.st-emotion-cache-6qob1r{
+    background-color: #dcd6c0
+}
+
+.user-message {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.assistant-message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.stChatMessage {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 16px;  /* Adjust the font size to make the bubbles smaller */
+    
+}
+
+.eyeqlp51{ /*send arrow*/
+    position: absolute;
+    top: 10px;
+    left: -12px;
+}
+
+.st-emotion-cache-1hkc054:hover {
+    background-color: transparent;
+    color: rgb(255,255,255);
+}
+
+.user-bubble{
+    background-color: #cfb179;
+    padding: 8px;
+    border-radius: 10px 10px 0 10px;
+    text-align: right;
+    color: #302e2b;
+    max-width: 70%;
+    overflow-wrap: break-word;
+}
+
+.assistant-bubble {
+    background-color: #faf8e3;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 16px;  /* Adjust the font size to make the bubbles smaller */
+    padding: 8px;
+    border-radius: 10px 10px 10px 0;
+    text-align: left;
+    color: #302e2b;
+    overflow-wrap: break-word;
+}
+
+.stChatInput {
+    background-color: #ffffff;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 10px;
+    align-self: flex-end;
+}
