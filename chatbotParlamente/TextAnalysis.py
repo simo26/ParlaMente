@@ -42,7 +42,7 @@ def split_and_count_tokens(pdf_path, split_word):
     return token_counts
 
 # Usage example
-pdf_path = "merged_RegistroCmeraDeputati.pdf"
+pdf_path = "merged_RegistroCameraDeputati.pdf"
 split_word = "-" 
 token_counts = split_and_count_tokens(pdf_path, split_word) 
 mean_token_counts = sum(token_counts) / len(token_counts)
