@@ -216,7 +216,7 @@ def display_document_embedding_page():
         print("assente")
 
         #richiamo read_pdf
-        combined_content = OpenAI_utility.read_pdf("chatbotParlamente/merged_RegistroCmeraDeputati.pdf")
+        combined_content = OpenAI_utility.read_pdf("chatbotParlamente/merged_RegistroCameraDeputati.pdf")
         #splitto il documento con chunk-size=520 e overlapping=80
         split = OpenAI_utility.split_doc(combined_content, 520, 80)
         #creo il vector_store
