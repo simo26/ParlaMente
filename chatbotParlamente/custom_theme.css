@@ -142,8 +142,22 @@
     overflow-wrap: break-word;
 }
 
+.st-emotion-cache-1vtsxbh{
+    position: relative;
+    right: -15px;
+}
+
+.st-emotion-cache-130cvuj{
+    position: relative;
+}
+
 .stChatInput {
     background-color: #ffffff;
+    overflow-wrap: break-word;
+}
+
+.stChatInputTextArea{
+    overflow-wrap: break-word;
 }
 
 .avatar { /*avatar logo*/
