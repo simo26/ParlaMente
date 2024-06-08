@@ -61,8 +61,8 @@ def display_chatbot_page():
     )
 
     #sono stati creati due temi, coffee theme con una palette di colori caldi, e custom theme con una palette di colori più classica
-    coffee_theme_css = 'coffee_theme.css'
-    custom_theme_css = 'custom_theme.css' 
+    coffee_theme_css = 'chatbotParlamente/coffee_theme.css'
+    custom_theme_css = 'chatbotParlamente/custom_theme.css' 
 
     #caricamento del tema di default
     if 'theme' not in st.session_state:
