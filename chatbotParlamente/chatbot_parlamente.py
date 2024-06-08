@@ -211,12 +211,12 @@ def display_message(role, content, avatar_url):
 def display_document_embedding_page():
 
     #se il vector_store nominato first_CameraDep esiste gia, non lo ricreo, se invece non esiste allora lo creo con lo stesso nome
-    if not os.path.exists("vector store/first_CameraDep"):
+    if not os.path.exists("chatbotParlamente/vector store/first_CameraDep"):
 
         print("assente")
 
         #richiamo read_pdf
-        combined_content = OpenAI_utility.read_pdf("merged_RegistroCmeraDeputati.pdf")
+        combined_content = OpenAI_utility.read_pdf("chatbotParlamente/merged_RegistroCmeraDeputati.pdf")
         #splitto il documento con chunk-size=520 e overlapping=80
         split = OpenAI_utility.split_doc(combined_content, 520, 80)
         #creo il vector_store
