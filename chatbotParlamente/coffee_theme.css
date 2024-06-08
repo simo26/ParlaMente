@@ -34,6 +34,15 @@
     
 }
 
+.st-emotion-cache-1vtsxbh{
+    position: relative;
+    right: -15px;
+}
+
+.st-emotion-cache-130cvuj{
+    position: relative;
+}
+
 .st-emotion-cache-uhkwx6{
     background-color: #ede8d4;
 }
@@ -104,12 +113,6 @@
     
 }
 
-.eyeqlp51{ /*send arrow*/
-    position: absolute;
-    top: 10px;
-    left: -12px;
-}
-
 .st-emotion-cache-1hkc054:hover {
     background-color: transparent;
     color: rgb(255,255,255);
@@ -122,7 +125,7 @@
     text-align: right;
     color: #302e2b;
     max-width: 70%;
-    overflow-wrap: break-word;
+    overflow-wrap: auto;
 }
 
 .assistant-bubble {
