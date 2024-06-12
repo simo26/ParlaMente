@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
+
 .stApp {
     background-color: #ffffff; /* Colore originale della pagina */
     color: #000000;
@@ -152,7 +153,7 @@
 }
 
 .stChatInput {
-    background-color: #ffffff;
+    background-color: black;
     overflow-wrap: break-word;
 }
 
